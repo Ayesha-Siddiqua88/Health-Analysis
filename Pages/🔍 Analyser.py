@@ -244,7 +244,7 @@ if select=='Diabetes Analysis':
 
         selected_data = fetch_data(selected_starting_date, selected_ending_date)
 
-        st.header("Diabetes Report")
+        st.title("Diabetes Variation")
         st.write(selected_data)
 
         if selected_data.empty:
@@ -439,7 +439,7 @@ if select=='Heart Analysis':
 
         selected_data = fetch_data(selected_starting_date, selected_ending_date)
 
-        st.header("Heart Report")
+        st.header("Heart Report Variation")
         st.write(selected_data)
 
         if selected_data.empty:
