@@ -1,13 +1,10 @@
-import pickle
-from pathlib import Path
+import json
 import streamlit as st
 from streamlit_option_menu import option_menu
-import streamlit_authenticator as stauth
 
 page_title = "Health Pilot "
 page_icon = "⚕️"
 layout = "centered"
-
 st.set_page_config(page_title=page_title, page_icon=page_icon, layout=layout)
 
 with st.sidebar:
@@ -44,8 +41,6 @@ box_style = """
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 """
-
-# Add content inside the colored box
 st.markdown(
     f"""
     <br>
@@ -64,9 +59,9 @@ st.markdown(
     <div style="{box_style}">
         <h4 style='color: #0066cc;'>How it Works!</h4>
         <ul>
-            <li>Choose a specific disease prediction from the sidebar.</li>
-            <li>Enter the relevant data for prediction.</li>
-            <li>Get instant results based on our trained machine learning models.</li>
+            <li>Choose a specific Analyser from the sidebar.</li>
+            <li>Enter the relevant data for prediction or analysis.</li>
+            <li>Get instant results based on our trained machine learning models!</li>
         </ul>
     </div>
     <br>
@@ -79,14 +74,54 @@ st.markdown(
     <div style="{box_style}">
         <h4 style='color: #0066cc;'>Features</h4>
         <ul>
-            <li>User-friendly interface.</li>
-            <li>Quick and accurate disease predictions.</li>
-            <li>Explore various disease prediction models.</li>
+            <li>Safely store and manage your previous health reports, creating a comprehensive archive for easy reference and tracking.</li>
+            <li>Experience a seamless and user-friendly interface designed to simplify your health journey.</li>
+            <li>Also provides Guidelines for effective diabetes control.</li>
         </ul>
     </div>
     """,
     unsafe_allow_html=True
 )
+st.balloons()
+
+def create_footer():
+    footer= """
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        """
+
+    button="""
+            background-color: #e78b2c; 
+            color: #fff;
+            padding: 5px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        """
+
+    st.markdown(
+        f"""
+        <br>
+        <br>
+        <div style="{footer}">
+            <a style="{button}" href="https://github.com/Ayesha-Siddiqua88" target="_blank">GitHub</a>
+            <br>
+            <br>
+            <p>Privacy | Health | Terms</p>
+            <p><i>Made with 💙 by AA</i></p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Use the footer in your Streamlit app
+create_footer()
+
+
 
 
 

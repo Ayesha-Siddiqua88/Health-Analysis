@@ -21,8 +21,10 @@ from datetime import datetime
 
 
 load_dotenv()
-# Access the API key
-openai.api_key= os.getenv("OPENAI_API_KEY")
+
+api_key= os.getenv("OPENAI_API_KEY")
+
+openai.api_key = api_key
 
 # styling
 hide_st_style = """
@@ -33,6 +35,19 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("https://images.unsplash.com/photo-1554120013-4ba50c1a1788?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+background-size: 180%;
+background-position: top left;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 
 # diabetes section
 # storing data in diabetes google sheets
@@ -86,20 +101,34 @@ def fetch_data(selected_start_date, selected_end_date):
     return selected_data
 
 
-def get_gpt3_response(diagnosis):
+def response(diagnosis):
     try:
-        prompt = "Provide precautions for a person depending on the following report submitted by him/her:{diagnosis}. Strictly take into account the values entered in Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction and compare them with the normal range they should actually be in to let the person know how much deviation is there. The values that are not in the normal range as they should be then accordinly give the precautions to comeback to normal range. The precautions shall include what the person should eat and also what the person should avoid eating with taking into account the age of the person.Compare the values with normal range they should be in. Start the response with 'The report shows that you are diabetic.....'. End the response with a sweet message to the patient."
-        
-        response = openai.Completion.create(
+        if(diagnosis=='The person is diabetic'):
+            prompt1 = f"Provide precautions for a person depending on the following report submitted by him/her:{diagnosis}. Strictly take into account the values entered in Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction and compare them with the normal range they should actually be in to let the person know how much deviation is there. The values that are not in the normal range as they should be then accordinly give the precautions to comeback to normal range. The precautions shall include what the person should eat and also what the person should avoid eating with taking into account the age of the person.Compare the values with normal range they should be in. Start the response with 'The report shows that you are diabetic.....'. End the response with a sweet message to the patient."
+            response = openai.Completion.create(
             engine="gpt-3.5-turbo-instruct-0914",
-            prompt=prompt,
-            max_tokens=350,
+            prompt=prompt1,
+            max_tokens=490,
             temperature=0.95
-        )
-        if response.choices and response.choices[0].text:
-            return response.choices[0].text.strip()
-        else:
-            return "Unable to generate precautions."
+            )
+            if response.choices and response.choices[0].text:
+               return response.choices[0].text.strip()
+            else:
+               return "Unable to generate precautions."
+    
+
+        if(diagnosis=='The person is having heart disease'):
+            prompt2 = f"Provide precautions for a person depending on the following report submitted by him/her:{diagnosis}. Strictly take into account the values entered in Chest Pain Type Resting Blood Pressure, Serum Cholesterol, Fasting Blood Sugar, Resting Electrocardiographic Results, Maximum Heart Rate Achieved, Exercise-Induced Angina, ST Depression Induced by Exercise Relative to Rest(oldpeak),Slope of the Peak Exercise ST Segment, Number of Major Vessels Colored by Fluoroscopy (0-3),Thalassemia -Blood Disorder (3 = Normal; 6 = Fixed Defect; 7 = Reversible Defect) and compare them with the normal range they should actually be in to let the person know how much deviation is there. The values that are not in the normal range as they should be then accordinly give the precautions to comeback to normal range. The precautions shall include what the person should eat and also what the person should avoid eating with taking into account the age of the person.Compare the values with normal range they should be in. Start the response with 'The report shows that you have a heart disease.....'. End the response with a sweet message to the patient."
+            response = openai.Completion.create(
+                engine="gpt-3.5-turbo-instruct-0914",
+                prompt=prompt2,
+                max_tokens=500,
+                temperature=0.95
+            )
+            if response.choices and response.choices[0].text:
+                return response.choices[0].text.strip()
+            else:
+                return "Unable to generate precautions."
 
     except Exception as e:
         return f"Error occurred: {str(e)}"
@@ -212,7 +241,7 @@ if select=='Diabetes Report':
 
 
                 if diab_diagnosis == 'The person is diabetic':
-                    precautions = get_gpt3_response(diab_diagnosis)
+                    precautions = response(diab_diagnosis)
                     st.markdown("### Precautions:")
                     st.write(precautions)
 
@@ -305,11 +334,8 @@ def fetch_data(selected_start_date, selected_end_date):
     mask = (df['Date'] >= selected_start_date) & (df['Date'] <= selected_end_date)
     selected_data = df.loc[mask].drop('heart_diagnosis', axis=1)
 
-    sex_mapping = {0: 'Male', 1: 'Female'}
+    sex_mapping = {0: 'Female', 1: 'Male'}
     selected_data['sex'] = selected_data['sex'].map(sex_mapping)
-
-    
-
     return selected_data
 
 
@@ -323,13 +349,12 @@ if select =='Heart Report':
 
         with col2:
             sex = st.text_input('Sex')
-            if sex=='Female':
-                sex=1
-            if sex=='female':
-                sex=1
-            if sex=='Male':
-                sex=0
-            else: sex=0
+            if sex.lower() == 'female':
+                sex = 1
+            elif sex.lower() == 'male':
+                sex = 0
+            else:
+                sex = 0
 
         with col3:
             cp = st.text_input('Chest Pain')
@@ -380,13 +405,11 @@ if select =='Heart Report':
         if heart_prediction[0] == 1:
             heart_diagnosis = 'The person is having heart disease'
         else:
-            heart_diagnosis = 'The person does not have any heart disease'
+            heart_diagnosis = 'The person does not have a heart disease'
 
         data_to_insert = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal,heart_diagnosis] 
         insert_data(data_to_insert)
 
-
-        # Store the input values in session_state
         st.session_state.heart_data = {
             "age":age,
             "sex":sex,
@@ -411,6 +434,12 @@ if select =='Heart Report':
             st.dataframe(heart_data)
             fig = go.Figure(data=[go.Pie(labels=heart_data.columns, values=heart_data.iloc[0].values)])
             st.plotly_chart(fig, use_container_width=True)
+
+        if heart_diagnosis == 'The person is having heart disease':
+                    precautions = response(heart_diagnosis)
+                    st.markdown("### Precautions:")
+                    st.write(precautions)
+
 
 if select=='Heart Analysis':
 
