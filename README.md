@@ -122,7 +122,7 @@ load_dotenv()
 Clone the project
 
 ```bash
-  git clone <https://github.com/Ayesha-Siddiqua88/Health-Pilot.git>
+  git clone https://github.com/Ayesha-Siddiqua88/Health-Pilot.git
 
 ```
 
