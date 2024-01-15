@@ -1,23 +1,14 @@
-https://github.com/Ayesha-Siddiqua88/Health-Pilot/assets/128472306/e9022d4a-8479-4b44-851f-d6d8299f6cb5
+<img src="images/HealthPilot.png">
 
 ![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)
-
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
-
 <br>
-
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=OpenAI&logoColor=white)
-
 ![ENV](https://img.shields.io/badge/.ENV-ECD53F.svg?style=for-the-badge&logo=dotenv&logoColor=black)
-
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75.svg?style=for-the-badge&logo=Plotly&logoColor=white)
-
 ![Pandas](https://img.shields.io/badge/pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-
 <BR>
-
 ![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853.svg?style=for-the-badge&logo=Google-Sheets&logoColor=white)
-
 ![Google Cloud](https://img.shields.io/badge/Google%20Cloud-4285F4.svg?style=for-the-badge&logo=Google-Cloud&logoColor=white)
 
 <br><br>
@@ -52,7 +43,6 @@ Welcome to Health Pilot. Your virtual co-pilot for a healthier you! It is a Diab
 Before running the application, ensure you have the following installed on your machine:<br><br>
 
 ![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)
-
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
 
 <br>
@@ -156,4 +146,4 @@ https://github.com/Ayesha-Siddiqua88/Health-Pilot/assets/128472306/9a4522fc-2a15
 
 ## 💙 Contributors
 
-https://img.shields.io/badge/Ama-Khanam-blue?style=flat&logo=github
+[![Contributor](https://img.shields.io/badge/Asma-Khanam-blue?style=flat&logo=github)](https://github.com/Asma-Khanam)
