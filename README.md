@@ -17,7 +17,7 @@
 
 - [What is Health Pilot?](#-what-is-health-pilot)
 - [Features](#-features)
-- [Integrating Google Sheets](#-integrating-google-sheets)
+- [Integrating Google Sheets](#%EF%B8%8F-integrating-google-sheets)
 - [Installation](#-installation)
 - [Run Application](#%EF%B8%8F-run-application)
 - [How to Use](#-how-to-use)
