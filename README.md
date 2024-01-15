@@ -42,7 +42,7 @@ Welcome to Health Pilot. Your virtual co-pilot for a healthier you! It is a Diab
 <br><br><br>
 
 
-## 🗄️ Intergrating Google sheets
+## 🗄️ Integrating Google sheets
 This applications uses Google Sheets as our data storage solution. We connected Health Pilot with google sheets with the help of Google Sheets API which is available on Google Cloud. The below are the steps followed to acheive the connection with google sheets:
 - Create a new project on Google Cloud and enable the Google Sheets API.
 - Create a API credentials and generate its JSON key file.
