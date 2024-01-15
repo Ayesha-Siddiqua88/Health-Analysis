@@ -17,6 +17,7 @@
 
 - [What is Health Pilot?](#-what-is-health-pilot)
 - [Features](#-features)
+- [Integrating Google Sheets](#-integrating-google-sheets)
 - [Installation](#-installation)
 - [Run Application](#%EF%B8%8F-run-application)
 - [How to Use](#-how-to-use)
@@ -38,7 +39,24 @@ Welcome to Health Pilot. Your virtual co-pilot for a healthier you! It is a Diab
 - Provides Guidelines for effective diabetes and heart disease control.
 - Google Sheets integration for data storage.
 - Data visualization for analysis.
-<br><br>
+<br><br><br>
+
+
+## 🗄️ Intergrating Google sheets
+This applications uses Google Sheets as our data storage solution. We connected Health Pilot with google sheets with the help of Google Sheets API which is available on Google Cloud. The below are the steps followed to acheive the connection with google sheets:
+- Create a new project on Google Cloud and enable the Google Sheets API.
+- Create a API credentials and generate its JSON key file.
+- Create a new google sheet and give the 'client email' from json key file the editor access.
+- Now, install the required Python libraries in the project to establish the connection:<br><br>
+  gspread, google-auth, google-auth-oauthlib and google-auth-httplib2
+    
+    ```bash
+    pip install gspread google-auth google-auth-oauthlib google-auth-httplib2
+    
+    ```
+
+    <br><br>
+
 
 ## 🔨 Installation
 
@@ -63,12 +81,7 @@ Before running the application, ensure you have the following installed on your 
     
     ```
     
-- Gspread
-    
-    ```bash
-    pip install gspread
-    
-    ```
+
     
 - OpenAI
     
@@ -143,6 +156,11 @@ Run the following code in terminal
 ## 🎥 Working
 
 https://github.com/Ayesha-Siddiqua88/Health-Pilot/assets/128472306/9a4522fc-2a15-418d-bbfc-cd4d25900a02
+
+![ss1](https://github.com/Ayesha-Siddiqua88/Health-Pilot/assets/128472306/1cd58184-a4fe-497f-99d8-addc74d26f1b) ![ss3](https://github.com/Ayesha-Siddiqua88/Health-Pilot/assets/128472306/4d3137b4-4ed0-4ecc-b031-d18bb6130255)
+
+
+
 
 <br>
 
