@@ -15,13 +15,13 @@
 
 ## 🗒️ Table of Contents
 
-- [What is Health Pilot?](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
-- [Features](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
-- [Installation](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
-- [Run Application](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
-- [How to Use](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
-- [Working](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
-- [Contributors](https://www.notion.so/help-e438ab3d3801420e86d7b9adb164a280?pvs=21)
+- [What is Health Pilot?](#-what-is-health-pilot)
+- [Features](#-features)
+- [Installation](#-installation)
+- [Run Application](#%EF%B8%8F-run-application)
+- [How to Use](#how-to-use)
+- [Working](#working)
+- [Contributors](#-contributors)
 <br>
 
 ## ⭐ What is Health Pilot?
