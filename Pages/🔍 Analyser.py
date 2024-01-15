@@ -7,6 +7,9 @@ import gspread
 import plotly.graph_objects as go
 import plotly.express as px
 
+from sklearn.model_selection import train_test_split
+from sklearn import svm
+from sklearn.metrics import accuracy_score
 from dotenv import load_dotenv
 from streamlit_option_menu import option_menu
 from google.oauth2 import service_account
