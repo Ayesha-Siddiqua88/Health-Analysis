@@ -136,7 +136,7 @@ Go to the project directory
 Run the following code in terminal
 
 ```bash
-  streamlit run app.py
+  streamlit run Pages/🔍 Analyser.py
 
 ```
 
