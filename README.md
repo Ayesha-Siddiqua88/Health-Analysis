@@ -26,12 +26,14 @@
 
 ## ⭐ What is Health Pilot?
 
-Welcome to Health Pilot. Your virtual co-pilot for a healthier you! It is a Diabetes and Heart Disease Prediction System. This platform is designed to predict and analyze diabetes and heart disease using trained machine learning models. It also provides you with the necessary precautions with the help of AI integration, you need to take if you have these diseases. So let Health Pilot be your passport to healthier journet ahead.
+Welcome to Health Pilot. Your virtual co-pilot for a healthier you! It is a Diabetes and Heart Disease Prediction System. This platform is designed to predict and analyze diabetes and heart disease using trained machine learning models. Our platform leverages state-of-the-art machine learning models to provide swift and accurate predictions based on the data you input. Whether you're assessing your risk factors, monitoring your health journey, or seeking preventive measures, our user-friendly interface empowers you with valuable insights. Also provides you with the necessary precautions(possible with AI integration) that you need to take if you have these diseases. So let Health Pilot be your passport to healthier journey ahead!
+
 <br><br>
 
 ## 🤓 Features
 
 - Quick and accurate disease predictions.
+- Experience a seamless and user-friendly interface designed to simplify your health journey.
 - Safely store and manage your previous health reports, creating a comprehensive archive for easy reference and tracking.
 - Provides Guidelines for effective diabetes and heart disease control.
 - Google Sheets integration for data storage.
