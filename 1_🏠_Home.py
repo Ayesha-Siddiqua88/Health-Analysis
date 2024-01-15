@@ -1,14 +1,13 @@
-import json
 import streamlit as st
-from streamlit_option_menu import option_menu
 
-page_title = "Health Pilot "
+# settings
+page_title = "Health Pilot"
 page_icon = "⚕️"
 layout = "centered"
 st.set_page_config(page_title=page_title, page_icon=page_icon, layout=layout)
 
 with st.sidebar:
-    st.image("images/Logoo.png")
+    st.image("images/Logo.png")
 
 page_bg_img = f"""
 <style>
@@ -22,6 +21,7 @@ background-attachment: local;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+# styling
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -33,6 +33,8 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+# body of page
 st.title('🩺 Welcome to :blue[Health Pilot]')
 
 box_style = """
@@ -76,13 +78,12 @@ st.markdown(
         <ul>
             <li>Safely store and manage your previous health reports, creating a comprehensive archive for easy reference and tracking.</li>
             <li>Experience a seamless and user-friendly interface designed to simplify your health journey.</li>
-            <li>Also provides Guidelines for effective diabetes control.</li>
+            <li>Also provides Guidelines for effective diabetes and heart disease control.</li>
         </ul>
     </div>
     """,
     unsafe_allow_html=True
 )
-st.balloons()
 
 def create_footer():
     footer= """
@@ -102,6 +103,9 @@ def create_footer():
             border-radius: 5px;
             cursor: pointer;
         """
+    text="""
+            font-size:11px
+        """
 
     st.markdown(
         f"""
@@ -112,13 +116,13 @@ def create_footer():
             <br>
             <br>
             <p>Privacy | Health | Terms</p>
-            <p><i>Made with 💙 by AA</i></p>
+            <p><i>Made with 💙 by Ayesha & Asma</i></p>
+            <p style="{text}">2023 Copyright. All Rights Reserved.</p>
         </div>
         """,
         unsafe_allow_html=True
     )
 
-# Use the footer in your Streamlit app
 create_footer()
 
 

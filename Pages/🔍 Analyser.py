@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan  9 18:46:22 2024
-
-@author: siddi
-"""
-
 import pickle
 import os
 import openai
@@ -19,11 +12,9 @@ from streamlit_option_menu import option_menu
 from google.oauth2 import service_account
 from datetime import datetime
 
-
+# loading env variables and assigning them
 load_dotenv()
-
 api_key= os.getenv("OPENAI_API_KEY")
-
 openai.api_key = api_key
 
 # styling
@@ -82,7 +73,6 @@ def insert_data(data):
         current_date = datetime.now().strftime("%Y-%m-%d")
         data_with_date = [current_date] + data
         sheet.append_row(data_with_date) 
-        st.success("Data inserted successfully.")
     except Exception as e:
         st.error(f"Error inserting data: {e}")
 
@@ -100,10 +90,10 @@ def fetch_data(selected_start_date, selected_end_date):
 
     return selected_data
 
-
+# connecting to gpt and generating a response with the input provided by patient
 def response(diagnosis):
     try:
-        if(diagnosis=='The person is diabetic'):
+        if(diagnosis=='According to the report entered, you are diabetic'):
             prompt1 = f"Provide precautions for a person depending on the following report submitted by him/her:{diagnosis}. Strictly take into account the values entered in Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction and compare them with the normal range they should actually be in to let the person know how much deviation is there. The values that are not in the normal range as they should be then accordinly give the precautions to comeback to normal range. The precautions shall include what the person should eat and also what the person should avoid eating with taking into account the age of the person.Compare the values with normal range they should be in. Start the response with 'The report shows that you are diabetic.....'. End the response with a sweet message to the patient."
             response = openai.Completion.create(
             engine="gpt-3.5-turbo-instruct-0914",
@@ -117,12 +107,12 @@ def response(diagnosis):
                return "Unable to generate precautions."
     
 
-        if(diagnosis=='The person is having heart disease'):
+        if(diagnosis=='According to the report entered, you are having a heart disease'):
             prompt2 = f"Provide precautions for a person depending on the following report submitted by him/her:{diagnosis}. Strictly take into account the values entered in Chest Pain Type Resting Blood Pressure, Serum Cholesterol, Fasting Blood Sugar, Resting Electrocardiographic Results, Maximum Heart Rate Achieved, Exercise-Induced Angina, ST Depression Induced by Exercise Relative to Rest(oldpeak),Slope of the Peak Exercise ST Segment, Number of Major Vessels Colored by Fluoroscopy (0-3),Thalassemia -Blood Disorder (3 = Normal; 6 = Fixed Defect; 7 = Reversible Defect) and compare them with the normal range they should actually be in to let the person know how much deviation is there. The values that are not in the normal range as they should be then accordinly give the precautions to comeback to normal range. The precautions shall include what the person should eat and also what the person should avoid eating with taking into account the age of the person.Compare the values with normal range they should be in. Start the response with 'The report shows that you have a heart disease.....'. End the response with a sweet message to the patient."
             response = openai.Completion.create(
                 engine="gpt-3.5-turbo-instruct-0914",
                 prompt=prompt2,
-                max_tokens=500,
+                max_tokens=600,
                 temperature=0.95
             )
             if response.choices and response.choices[0].text:
@@ -134,7 +124,7 @@ def response(diagnosis):
         return f"Error occurred: {str(e)}"
 
 
-
+# loading the trained ml models
 diabetes_model = pickle.load(open('C:/Users/siddi/OneDrive/Desktop/Model/diabetes_model.sav', 'rb'))
 
 heart_disease_model = pickle.load(open('C:/Users/siddi/OneDrive/Desktop/Model/heart_disease_model.sav', 'rb'))
@@ -148,7 +138,7 @@ with st.sidebar:
                         menu_icon='hospital-fill',
                         icons=['activity', 'heart'],
                         default_index=0)
-    st.image("images/Logoo.png")
+    st.image("images/Logo.png")
 
 
 
@@ -170,7 +160,7 @@ if selected == 'Heart Disease Analyser':
                         orientation='horizontal',
                         )
     
-# diabetes
+# Diabetes Report entry
 if select=='Diabetes Report':
     with st.form("entry_form", clear_on_submit=True):
             col1, col2, col3 = st.columns(3)
@@ -212,9 +202,9 @@ if select=='Diabetes Report':
                 diab_prediction = diabetes_model.predict([user_input])
 
                 if diab_prediction[0] == 1:
-                    diab_diagnosis = 'The person is diabetic'
+                    diab_diagnosis = 'According to the report entered, you are diabetic'
                 else:
-                    diab_diagnosis = 'The person is not diabetic'
+                    diab_diagnosis = 'According to the report entered, you are not diabetic'
 
                 data_to_insert = [Pregnancies, Glucose, BloodPressure,SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,diab_diagnosis] 
                 insert_data(data_to_insert)
@@ -240,12 +230,12 @@ if select=='Diabetes Report':
                     st.plotly_chart(fig, use_container_width=True)
 
 
-                if diab_diagnosis == 'The person is diabetic':
+                if diab_diagnosis == 'According to the report entered, you are diabetic':
                     precautions = response(diab_diagnosis)
-                    st.markdown("### Precautions:")
+                    st.markdown("## Precautions to take:")
                     st.write(precautions)
 
-
+# Diabetes Analysis section
 if select=='Diabetes Analysis':
 
     json_file_path = 'danger/diabetes-410815-3fb0f7e88b03.json'
@@ -286,7 +276,6 @@ if select=='Diabetes Analysis':
 
 
 # Heart disease prediction
-# storing data in heart disease google sheets
 def store_data_in_google_sheets(data):
     json_file_path = 'danger/heart-410815-eab8e7b4e4b7.json'
     credentials = service_account.Credentials.from_service_account_file(
@@ -318,7 +307,6 @@ def insert_data(data):
         current_date = datetime.now().strftime("%Y-%m-%d")
         data_with_date = [current_date] + data
         sheet.append_row(data_with_date) 
-        st.success("Data inserted successfully.")
     except Exception as e:
         st.error(f"Error inserting data: {e}")
 
@@ -334,12 +322,12 @@ def fetch_data(selected_start_date, selected_end_date):
     mask = (df['Date'] >= selected_start_date) & (df['Date'] <= selected_end_date)
     selected_data = df.loc[mask].drop('heart_diagnosis', axis=1)
 
-    sex_mapping = {0: 'Female', 1: 'Male'}
+    sex_mapping = {1: 'Female', 0: 'Male'}
     selected_data['sex'] = selected_data['sex'].map(sex_mapping)
     return selected_data
 
 
-    
+# Heart Report entry
 if select =='Heart Report':
     with st.form("entry_form", clear_on_submit=True):
         col1, col2, col3 = st.columns(3)
@@ -391,7 +379,6 @@ if select =='Heart Report':
 
         heart_diagnosis = ''
 
-        # creating a button for Prediction
         submitted=st.form_submit_button('Heart Test Result')
     if submitted:
 
@@ -403,9 +390,9 @@ if select =='Heart Report':
         heart_prediction = heart_disease_model.predict([user_input])
 
         if heart_prediction[0] == 1:
-            heart_diagnosis = 'The person is having heart disease'
+            heart_diagnosis = 'According to the report entered, you are having a heart disease'
         else:
-            heart_diagnosis = 'The person does not have a heart disease'
+            heart_diagnosis = 'According to the report entered, you are not having a heart disease'
 
         data_to_insert = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal,heart_diagnosis] 
         insert_data(data_to_insert)
@@ -435,12 +422,13 @@ if select =='Heart Report':
             fig = go.Figure(data=[go.Pie(labels=heart_data.columns, values=heart_data.iloc[0].values)])
             st.plotly_chart(fig, use_container_width=True)
 
-        if heart_diagnosis == 'The person is having heart disease':
+        if heart_diagnosis == 'According to the report entered, you are having a heart disease':
                     precautions = response(heart_diagnosis)
-                    st.markdown("### Precautions:")
+                    st.markdown("## Precautions to take:")
                     st.write(precautions)
 
 
+# Heart Analysis section
 if select=='Heart Analysis':
 
     json_file_path = 'danger/heart-410815-eab8e7b4e4b7.json'
