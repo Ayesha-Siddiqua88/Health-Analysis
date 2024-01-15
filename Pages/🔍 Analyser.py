@@ -125,9 +125,9 @@ def response(diagnosis):
 
 
 # loading the trained ml models
-diabetes_model = pickle.load(open('C:/Users/siddi/OneDrive/Desktop/Model/diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open('Model/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('C:/Users/siddi/OneDrive/Desktop/Model/heart_disease_model.sav', 'rb'))
+heart_disease_model = pickle.load(open('Model/heart_disease_model.sav', 'rb'))
 
 
 # main sidebar
