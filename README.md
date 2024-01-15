@@ -19,8 +19,8 @@
 - [Features](#-features)
 - [Installation](#-installation)
 - [Run Application](#%EF%B8%8F-run-application)
-- [How to Use](#how-to-use)
-- [Working](#working)
+- [How to Use](#-how-to-use)
+- [Working](#-working)
 - [Contributors](#-contributors)
 <br>
 
