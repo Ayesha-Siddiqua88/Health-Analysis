@@ -5,6 +5,7 @@ pandas
 streamlit
 gspread
 plotly
+scikit-learn
 python-dotenv
 streamlit-option-menu
 google-auth
