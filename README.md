@@ -45,9 +45,9 @@ Welcome to Health Pilot. Your virtual co-pilot for a healthier you! It is a Diab
 
 
 ## 🗄️ Integrating Google sheets
-This applications uses Google Sheets as our data storage solution. We connected Health Pilot with google sheets with the help of Google Sheets API which is available on Google Cloud. The below are the steps followed to acheive the connection with google sheets:
+This applications uses Google Sheets as a data storage solution. Connected Health Pilot with google sheets with the help of Google Sheets API which is available on Google Cloud. The below are the steps followed to acheive the connection with google sheets:
 - Create a new project on Google Cloud and enable the Google Sheets API.
-- Create a API credentials and generate its JSON key file.
+- Create API credential and generate its JSON key file.
 - Create a new google sheet and give the 'client email' from json key file the editor access.
 - Now, install the required Python libraries in the project to establish the connection:<br><br>
   gspread, google-auth, google-auth-oauthlib and google-auth-httplib2
