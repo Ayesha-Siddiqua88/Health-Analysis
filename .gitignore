@@ -1,2 +1,21 @@
+# Ignore the danger folder and its contents
+danger/
+
+# Other common files and folders to ignore
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
 .env
-danger
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode settings
+.vscode/
+
+# MacOS and Windows files
+.DS_Store
+Thumbs.db

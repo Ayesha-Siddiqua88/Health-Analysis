@@ -50,7 +50,7 @@ def store_data_in_google_sheets(data):
 
     )
     client = gspread.authorize(credentials)
-    sheet = client.open("Diabetes-sheet").sheet1  
+    sheet = client.open("Diabetes spreadsheet").sheet1  
     date = pd.to_datetime('today').strftime("%Y-%m-%d")
     data_with_date = [date] + data
     sheet.append_row(data_with_date)
@@ -69,7 +69,7 @@ def insert_data(data):
         scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
         )
         client = gspread.authorize(credentials)
-        sheet = client.open("Diabetes-sheet").sheet1  
+        sheet = client.open("Diabetes spreadsheet").sheet1  
         current_date = datetime.now().strftime("%Y-%m-%d")
         data_with_date = [current_date] + data
         sheet.append_row(data_with_date) 
@@ -79,7 +79,7 @@ def insert_data(data):
 
 # Function to fetch data from Google Sheets based on the selected period
 def fetch_data(selected_start_date, selected_end_date):
-    sheet = client.open("Diabetes-sheet").sheet1 
+    sheet = client.open("Diabetes spreadsheet").sheet1 
     all_data = sheet.get_all_records()
 
     df = pd.DataFrame(all_data)
@@ -125,9 +125,9 @@ def response(diagnosis):
 
 
 # loading the trained ml models
-diabetes_model = pickle.load(open('C:/Users/siddi/OneDrive/Desktop/Model/diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open('Model/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('C:/Users/siddi/OneDrive/Desktop/Model/heart_disease_model.sav', 'rb'))
+heart_disease_model = pickle.load(open('Model/heart_disease_model.sav', 'rb'))
 
 
 # main sidebar
@@ -230,10 +230,10 @@ if select=='Diabetes Report':
                     st.plotly_chart(fig, use_container_width=True)
 
 
-                if diab_diagnosis == 'According to the report entered, you are diabetic':
-                    precautions = response(diab_diagnosis)
-                    st.markdown("## Precautions to take:")
-                    st.write(precautions)
+                # if diab_diagnosis == 'According to the report entered, you are diabetic':
+                #     precautions = response(diab_diagnosis)
+                #     st.markdown("## Precautions to take:")
+                #     st.write(precautions)
 
 # Diabetes Analysis section
 if select=='Diabetes Analysis':
@@ -245,7 +245,7 @@ if select=='Diabetes Analysis':
     )
     client = gspread.authorize(credentials)
 
-    all_data = fetch_data(pd.to_datetime('2023-03-01'), pd.to_datetime('2024-12-30')) 
+    all_data = fetch_data(pd.to_datetime('2024-11-03'), pd.to_datetime('2024-12-30')) 
 
     if all_data.empty:
         st.warning("No data available.")
@@ -284,7 +284,7 @@ def store_data_in_google_sheets(data):
 
     )
     client = gspread.authorize(credentials)
-    sheet = client.open("Heart-sheet").sheet1  
+    sheet = client.open("Heart spreadsheet").sheet1  
     date = pd.to_datetime('today').strftime("%Y-%m-%d")
     data_with_date = [date] + data
     sheet.append_row(data_with_date)
@@ -303,7 +303,7 @@ def insert_data(data):
         scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
         )
         client = gspread.authorize(credentials)
-        sheet = client.open("Heart-sheet").sheet1  
+        sheet = client.open("Diabetes spreadsheet").sheet1  
         current_date = datetime.now().strftime("%Y-%m-%d")
         data_with_date = [current_date] + data
         sheet.append_row(data_with_date) 
@@ -313,7 +313,7 @@ def insert_data(data):
 
 # Function to fetch data from Google Sheets based on the selected period
 def fetch_data(selected_start_date, selected_end_date):
-    sheet = client.open("Heart-sheet").sheet1 
+    sheet = client.open("Heart spreadsheet").sheet1 
     all_data = sheet.get_all_records()
 
     df = pd.DataFrame(all_data)
@@ -422,10 +422,10 @@ if select =='Heart Report':
             fig = go.Figure(data=[go.Pie(labels=heart_data.columns, values=heart_data.iloc[0].values)])
             st.plotly_chart(fig, use_container_width=True)
 
-        if heart_diagnosis == 'According to the report entered, you are having a heart disease':
-                    precautions = response(heart_diagnosis)
-                    st.markdown("## Precautions to take:")
-                    st.write(precautions)
+        # if heart_diagnosis == 'According to the report entered, you are having a heart disease':
+        #             precautions = response(heart_diagnosis)
+        #             st.markdown("## Precautions to take:")
+        #             st.write(precautions)
 
 
 # Heart Analysis section
@@ -438,7 +438,7 @@ if select=='Heart Analysis':
     )
     client = gspread.authorize(credentials)
 
-    all_data = fetch_data(pd.to_datetime('2023-03-01'), pd.to_datetime('2024-12-30')) 
+    all_data = fetch_data(pd.to_datetime('2024-11-03'), pd.to_datetime('2024-12-30')) 
 
     if all_data.empty:
         st.warning("No data available.")
