@@ -35,7 +35,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 # diabetes section
 # storing data in diabetes google sheets
 def store_data_in_google_sheets(data):
-    json_file_path = 'danger/diabetes.json'
+    json_file_path = 'diabetes.json'
     credentials = service_account.Credentials.from_service_account_file(
         json_file_path,
         scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
@@ -55,7 +55,7 @@ if 'data' not in st.session_state:
 # insert data into diabetes table
 def insert_data(data):
     try:
-        json_file_path = 'danger/diabetes\.json'
+        json_file_path = 'diabetes.json'
         credentials = service_account.Credentials.from_service_account_file(
         json_file_path,
         scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
@@ -181,7 +181,7 @@ if select=='Diabetes Analysis':
     st.write("In the Diabetes Analysis section, you can view trends and patterns in your diabetes-related health data over time. "
              "Select a time period to analyze how key health indicators have changed.")
 
-    json_file_path = 'danger/diabetes.json'
+    json_file_path = 'diabetes.json'
     credentials = service_account.Credentials.from_service_account_file(
         json_file_path,
         scopes=["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -221,7 +221,7 @@ if select=='Diabetes Analysis':
 # insert data into diabetes table
 def insert_data(data):
     try:
-        json_file_path = 'danger/diabetes.json'
+        json_file_path = 'diabetes.json'
         credentials = service_account.Credentials.from_service_account_file(
         json_file_path,
         scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
