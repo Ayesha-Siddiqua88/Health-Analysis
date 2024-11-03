@@ -22,7 +22,6 @@
 - [Installation](#-installation)
 - [Run Application](#%EF%B8%8F-run-application)
 - [How to Use](#-how-to-use)
-- [Working](#-working)
 - [Made By](#-made-by)
 <br>
 
@@ -124,7 +123,7 @@ Run the following code in terminal
 
 <br>
 
-## 🎥 Working
+## 🎥
 
 ![health-pilot2](https://github.com/user-attachments/assets/32f57373-7ff6-4d16-806f-d4f7c45d9176)
 ![health-pilot3](https://github.com/user-attachments/assets/a4a66df6-bb68-432f-af7a-d6f602ffe4eb)
