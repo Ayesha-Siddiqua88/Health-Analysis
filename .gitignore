@@ -1,4 +1,6 @@
 # Other common files and folders to ignore
+danger/
+
 # Python cache files
 __pycache__/
 *.py[cod]
@@ -16,3 +18,5 @@ venv/
 # MacOS and Windows files
 .DS_Store
 Thumbs.db
+danger
+danger/diabetes-410815-3fb0f7e88b03.json
