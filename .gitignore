@@ -1,4 +1,6 @@
 # Other common files and folders to ignore
+danger
+
 # Python cache files
 __pycache__/
 *.py[cod]
