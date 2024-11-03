@@ -1,6 +1,5 @@
 # requirements.txt
 
-openai==0.28
 pandas
 streamlit
 gspread

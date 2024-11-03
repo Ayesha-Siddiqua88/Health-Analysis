@@ -1,6 +1,3 @@
-# Ignore the danger folder and its contents
-danger/
-
 # Other common files and folders to ignore
 # Python cache files
 __pycache__/
