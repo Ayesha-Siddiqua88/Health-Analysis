@@ -147,9 +147,9 @@ if select=='Diabetes Report':
                 diab_prediction = diabetes_model.predict([user_input])
 
                 if diab_prediction[0] == 1:
-                    diab_diagnosis = 'According to the report entered, you are diabetic'
+                    diab_diagnosis = 'According to the results, you show signs that could indicate a potential risk of developing diabetes.'
                 else:
-                    diab_diagnosis = 'According to the report entered, you are not diabetic'
+                    diab_diagnosis = 'The results suggest that you currently show no signs of diabetes. However, regular check-ups and a healthy lifestyle are still important to maintain this status.'
 
                 data_to_insert = [Pregnancies, Glucose, BloodPressure,SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,diab_diagnosis] 
                 insert_data(data_to_insert)
