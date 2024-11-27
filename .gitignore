@@ -1,5 +1,5 @@
 # Other common files and folders to ignore
-danger
+../danger
 
 # Python cache files
 __pycache__/
@@ -19,4 +19,5 @@ venv/
 .DS_Store
 Thumbs.db
 danger
-danger/diabetes-410815-3fb0f7e88b03.json
+../danger/diabetes.json
+../danger/heart.json

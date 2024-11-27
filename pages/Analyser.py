@@ -12,9 +12,9 @@ from google.oauth2 import service_account
 from datetime import datetime
 from dotenv import load_dotenv
 
-load_dotenv()
-api_key= os.getenv("OPENAI_API_KEY")
-openai.api_key = api_key
+# load_dotenv()
+# api_key= os.getenv("OPENAI_API_KEY")
+# openai.api_key = api_key
 
 # styling
 hide_st_style = """
